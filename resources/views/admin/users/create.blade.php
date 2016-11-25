@@ -10,7 +10,7 @@
 
             <div class="form-group">
                 {!! Form::label('password', 'Password:') !!}
-                {!! Form::password('password', null, ['class'=>'form-control']) !!}
+                {!! Form::password('password', ['class'=>'form-control']) !!}
             </div>
 
             <div class="form-group">
@@ -30,7 +30,7 @@
 
             <div class="form-group">
                 {!! Form::label('photo_id', 'File:') !!}
-                {!! Form::file('photo_id',null, ['class'=>'form-control']) !!}
+                {!! Form::file('photo_id', null) !!}
             </div>
 
             <div class="form-group">
