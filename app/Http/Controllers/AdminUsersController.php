@@ -124,6 +124,7 @@ class AdminUsersController extends Controller
 
         $input['password'] = bcrypt($request->password);
 
+
         $user->update($input);
 
         return redirect('/admin/users');
@@ -141,6 +142,7 @@ class AdminUsersController extends Controller
         //
         $user = User::findOrFail($id);
 
+        if($user->photo)
         unlink(public_path() . $user->photo->file); //ja brise slikata od folderot
 
         $user->delete();
