@@ -75,8 +75,6 @@ class AdminPostsController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -96,7 +94,13 @@ class AdminPostsController extends Controller
         $post = Post::findOrFail($id);
         $categories = Category::pluck('name','id')->all();
 
-        return view('admin.posts.edit', compact('post', 'categories'));
+
+        if(Auth::user()->id==$post->user->id)
+            return view('admin.posts.edit', compact('post', 'categories'));
+        else {
+            $back = \Illuminate\Support\Facades\URL::previous();
+             return redirect()->to($back);
+        }
     }
 
     /**
